@@ -1,0 +1,7 @@
+{
+  "name": "Euonia - IMC Teaching Assistant",
+  "description": "An AI teaching assistant for the Integrated Marketing Communications course, focusing on strategy, fundamentals, and pedagogical guidance.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}
