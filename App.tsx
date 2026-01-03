@@ -129,12 +129,19 @@ const App: React.FC = () => {
         console.groupEnd();
       }
 
-    } catch (error) {
-      console.error(error);
+    } catch (error: any) {
+      console.error("Chat Error:", error);
+      let errorMessage = "I apologize, but I encountered an error connecting to the service. Please try again.";
+      
+      // Display detailed error if available (helpful for debugging API Key issues)
+      if (error.message && (error.message.includes("API_KEY") || error.message.includes("400") || error.message.includes("403"))) {
+         errorMessage += ` (System Error: ${error.message})`;
+      }
+
       setMessages(prev => [...prev, {
         id: Date.now().toString(),
         role: Role.MODEL,
-        text: "I apologize, but I encountered an error connecting to the service. Please try again."
+        text: errorMessage
       }]);
     } finally {
       setIsLoading(false);
